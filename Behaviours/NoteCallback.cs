@@ -13,8 +13,8 @@ namespace MidiControllerPatch.Behaviours
         void Start()
         {
             synthesizer = gameObject.GetComponent<Synthesizer>();
-            synthesizer.soundFontPath = Path.Combine(Path.GetDirectoryName(
-                Assembly.GetExecutingAssembly().Location), "Yamaha_C3_Grand_Piano.sf2");
+            // synthesizer.soundFontPath = Path.Combine(Path.GetDirectoryName(
+            //     Assembly.GetExecutingAssembly().Location), "Yamaha_C3_Grand_Piano.sf2");
 
             InputSystem.onDeviceChange += (device, change) =>
             {

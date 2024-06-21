@@ -8,7 +8,7 @@ namespace MidiControllerPatch.Patches
 {
     internal class PlayerControllerBPatch
     {
-        public static void Init(AudioMixer mixer)
+        public static void Init()
         {
             On.GameNetcodeStuff.PlayerControllerB.Awake +=
                 (On.GameNetcodeStuff.PlayerControllerB.orig_Awake orig, GameNetcodeStuff.PlayerControllerB self) =>
@@ -20,7 +20,7 @@ namespace MidiControllerPatch.Patches
                 midiObject.AddComponent<NoteCallback>();
                 AudioSource audioSource = midiObject.AddComponent<AudioSource>();
                 audioSource.loop = false;
-                audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Master").FirstOrDefault();
+                audioSource.outputAudioMixerGroup = Plugin.Instance.midiMixer.FindMatchingGroups("Master").FirstOrDefault();
                 audioSource.spatialBlend = 1;
             };
         }
